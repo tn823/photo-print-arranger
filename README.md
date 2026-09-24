@@ -6,6 +6,7 @@
 
 ## ✨ Tính năng nổi bật
 
+- **Giao diện hiện đại (Modern UI)**: Xây dựng bằng thư viện **CustomTkinter** với phong cách bo góc mềm mại, chuẩn Fluent Design Windows 11, hỗ trợ cả **Dark Mode** (Giao diện tối) và **Light Mode** (Giao diện sáng).
 - **Tự động chia đều**: Tự động tính toán kích thước tối ưu cho từng ảnh trên trang A4.
 - **Không bóp méo hình (Preserve Aspect Ratio)**: Khóa chuẩn tỉ lệ khung hình gốc của ảnh.
 - **Kích thước đồng nhất**: Tất cả ảnh trên tài liệu đều có cùng một kích thước bằng nhau 100%.
