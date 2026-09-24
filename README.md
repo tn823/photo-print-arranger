@@ -1,103 +1,154 @@
+<div align="center">
+
 # 📸 Photo Print Arranger
+### Công cụ tự động dàn trang in ảnh & photocopy khổ A4 chuẩn tỉ lệ
 
-Ứng dụng Python tự động dàn trang ảnh in ấn & photocopy khổ giấy **A4** (xuất ra file **Word `.docx`** hoặc **PDF `.pdf`**).
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![UI](https://img.shields.io/badge/GUI-CustomTkinter-0ea5e9?logo=windows&logoColor=white)](https://github.com/TomSchimansky/CustomTkinter)
+[![Output](https://img.shields.io/badge/Output-Word%20%7C%20PDF-22c55e?logo=microsoftword&logoColor=white)](https://github.com/)
+[![Platform](https://img.shields.io/badge/Platform-Windows-0284c7?logo=windows)](https://microsoft.com)
+[![License](https://img.shields.io/badge/License-MIT-gray)](LICENSE)
 
----
-
-## ✨ Tính năng nổi bật
-
-- **Giao diện hiện đại (Modern UI)**: Xây dựng bằng thư viện **CustomTkinter** với phong cách bo góc mềm mại, chuẩn Fluent Design Windows 11, hỗ trợ cả **Dark Mode** (Giao diện tối) và **Light Mode** (Giao diện sáng).
-- **Tự động chia đều**: Tự động tính toán kích thước tối ưu cho từng ảnh trên trang A4.
-- **Không bóp méo hình (Preserve Aspect Ratio)**: Khóa chuẩn tỉ lệ khung hình gốc của ảnh.
-- **Kích thước đồng nhất**: Tất cả ảnh trên tài liệu đều có cùng một kích thước bằng nhau 100%.
-- **Giữ trọn chất lượng gốc (Lossless)**: Nhúng file ảnh gốc trực tiếp vào văn bản, không nén hay giảm độ phân giải.
-- **Tùy chọn linh hoạt**:
-  - Số ảnh trên 1 trang: `1`, `2`, `3`, `4`, `6`, `8`, `9`, `12`...
-  - Chiều giấy: **Khổ Ngang (Landscape)** hoặc **Khổ Dọc (Portrait)**.
-  - Định dạng xuất: **Word (.docx)**, **PDF (.pdf)** hoặc **Cả hai**.
-  - Tùy chọn thêm viền cắt đứt mờ để tiện dùng kéo cắt rời từng ảnh.
-- **2 Chế độ sử dụng**: Có sẵn **Giao diện đồ họa (GUI)** trực quan và **Dòng lệnh (CLI)** cho tác vụ tự động.
+*Giải pháp nhanh chóng, chính xác giúp sắp xếp hàng loạt ảnh vào trang giấy A4 mà không bị méo hình, không giảm độ phân giải, tự động căn lề và sẵn sàng mang in ấn hoặc photocopy.*
 
 ---
 
-## 🚀 Cài đặt
+</div>
 
-1. Đảm bảo máy tính đã cài đặt **Python 3.10+**.
-2. Cài đặt các thư viện phụ thuộc:
+## 📌 Tại sao cần Photo Print Arranger?
+
+Khi in ảnh thủ công bằng Word hoặc công cụ in mặc định:
+- ❌ Ảnh thường bị kéo giãn tỉ lệ, méo mặt nhân vật/chủ thể.
+- ❌ Kích thước giữa các ảnh không đều nhau, phải căn chỉnh thủ công từng ảnh rất mất thời gian.
+- ❌ Dễ bị nhảy trang trắng khi in ấn.
+
+**Photo Print Arranger** giải quyết triệt để vấn đề trên chỉ với **1 cú click chuột**.
+
+---
+
+## ✨ Tính năng cốt lõi
+
+| Tính năng | Chi tiết |
+| :--- | :--- |
+| **Khóa chuẩn tỉ lệ (Aspect Ratio)** | Giữ nguyên 100% tỉ lệ gốc của ảnh, tuyệt đối không bị bóp méo. |
+| **Đồng nhất kích thước** | Tự động tính toán toán học để mọi ảnh trên tài liệu có **kích thước bằng nhau 100%**. |
+| **Bảo toàn chất lượng (Lossless)** | Nhúng trực tiếp file ảnh gốc độ phân giải cao vào file Word, không qua nén giảm chất lượng. |
+| **Bố cục đa dạng** | Hỗ trợ chia `1`, `2`, `4`, `6`, `8`, `9`, `12` ảnh/trang theo **Khổ Ngang (Landscape)** hoặc **Khổ Dọc (Portrait)**. |
+| **Xuất đa định dạng** | Xuất trực tiếp file **Word (`.docx`)**, **PDF (`.pdf`)** hoặc **Cả hai**. |
+| **Giao diện Popup hiện đại** | Thiết kế dạng hộp thoại nhỏ gọn, bo góc chuẩn Windows 11, tự động căn giữa màn hình, không cần cuộn trang. |
+| **Đường viền cắt thông minh** | Tùy chọn bật viền đứt mờ (dashed border) giúp định hình vết cắt kéo thẳng thắn, chính xác. |
+
+---
+
+## 📐 Bảng quy cách bố cục in ấn trên giấy A4
+
+| Số ảnh / trang | Chiều giấy | Bố cục lưới | Kích thước mỗi ảnh | Ứng dụng thực tế |
+| :---: | :---: | :---: | :---: | :--- |
+| **1 ảnh** | Ngang / Dọc | $1 \times 1$ | Toàn trang A4 | Bằng khen, chứng chỉ, poster nhỏ |
+| **2 ảnh** *(Khuyên dùng)* | **Ngang** | $1 \times 2$ | **$\sim 13.5 \times 18.0\text{ cm}$** | Chuẩn khổ ảnh $13 \times 18\text{ cm}$ (cắt đôi tờ A4 là được 2 ảnh cực nét) |
+| **2 ảnh** | **Dọc** | $2 \times 1$ | **$\sim 9.6 \times 12.8\text{ cm}$** | Kẹp bìa hồ sơ, học bạ dọc |
+| **4 ảnh** | Ngang / Dọc | $2 \times 2$ | **$\sim 9.0 \times 12.0\text{ cm}$** | Ảnh lưu niệm tập thể, ảnh thẻ lớn ($9 \times 12$) |
+| **6 ảnh** | Ngang | $2 \times 3$ | **$\sim 6.0 \times 8.0\text{ cm}$** | Ảnh minh họa giáo trình, phiếu theo dõi |
+| **8 ảnh** | Ngang | $2 \times 4$ | **$\sim 4.5 \times 6.0\text{ cm}$** | Thẻ học sinh, thẻ nhân viên |
+
+---
+
+## 🚀 Hướng dẫn cài đặt
+
+### 1. Yêu cầu hệ thống
+- Hệ điều hành: **Windows 10 / 11**
+- **Python 3.10** trở lên
+- Microsoft Word (nếu sử dụng tính năng tự động xuất sang file PDF)
+
+### 2. Cài đặt thư viện
+Mở Terminal hoặc Command Prompt tại thư mục dự án và chạy:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-## 🖥️ Cách sử dụng
+## 🖥️ Hướng dẫn sử dụng
 
-### 1. Sử dụng Giao diện đồ họa (GUI)
-- Click đúp vào file **`run.bat`** (trên Windows).
-- Hoặc chạy lệnh:
-```bash
-python main.py
-```
-- Các bước thao tác trên giao diện:
-  1. Bấm **Chọn thư mục ảnh** (hoặc chọn nhiều ảnh lẻ).
-  2. Chọn số lượng ảnh mỗi trang (ví dụ: `2` ảnh/trang).
-  3. Chọn chiều giấy (**Khổ Ngang** hoặc **Khổ Dọc**).
-  4. Chọn định dạng xuất (**Word**, **PDF** hoặc **Cả hai**).
-  5. Bấm **🚀 Bắt đầu tạo file in ấn**.
+### Cách 1: Sử dụng Giao diện Popup (Khuyên dùng)
+- Click đúp vào file **`run.bat`** (hoặc chạy lệnh `python main.py`).
+- Thao tác nhanh qua 4 bước:
+  1. **Chọn nguồn ảnh**: Bấm `📁 Chọn thư mục ảnh` (hoặc `🖼️ Chọn file lẻ`).
+  2. **Chọn bố cục**: Chọn số ảnh/trang (`2 ảnh`), khổ giấy (`Khổ Ngang` / `Khổ Dọc`), định dạng xuất (`Word` / `PDF`).
+  3. **Vị trí lưu**: Mặc định lưu cùng thư mục với ảnh gốc.
+  4. **Thực thi**: Bấm **`🚀 BẮT ĐẦU TẠO FILE IN ẤN`**.
 
 ---
 
-### 2. Sử dụng qua Dòng lệnh (CLI)
-Dành cho người thích gõ lệnh hoặc tích hợp vào script tự động:
+### Cách 2: Sử dụng qua Dòng lệnh (CLI)
+Dành cho người dùng thích tự động hóa hoặc tích hợp vào hệ thống:
 
 ```bash
-# Gom toàn bộ ảnh trong thư mục, mỗi trang 2 ảnh khổ ngang, xuất file Word
+# Cú pháp cơ bản:
+python main.py -i "<Đường_dẫn_thư_mục_ảnh>" [tùy_chọn]
+
+# Ví dụ 1: Gom toàn bộ ảnh, 2 ảnh/trang, khổ ngang, xuất Word
 python main.py -i "E:\DOWNLOADS\image" -c 2 -o landscape -f docx
 
-# Mỗi trang 4 ảnh khổ dọc, xuất cả file Word và PDF
-python main.py -i "E:\DOWNLOADS\image" -c 4 -o portrait -f both
+# Ví dụ 2: 4 ảnh/trang, khổ dọc, thêm viền cắt mờ, xuất cả Word & PDF
+python main.py -i "E:\DOWNLOADS\image" -c 4 -o portrait -b -f both
 
-# Thêm đường viền cắt mờ
-python main.py -i "E:\DOWNLOADS\image" -c 2 -b -f docx
+# Xem tất cả các tham số hỗ trợ
+python main.py --help
 ```
 
-#### Các tham số dòng lệnh:
-- `-i`, `--input`: Đường dẫn thư mục hoặc file ảnh (bắt buộc trong CLI).
-- `-c`, `--count`: Số ảnh trên 1 trang (Mặc định: `2`).
-- `-o`, `--orientation`: Khổ giấy: `landscape` (ngang) hoặc `portrait` (dọc).
-- `-f`, `--format`: Định dạng xuất: `docx`, `pdf`, `both` (Mặc định: `docx`).
-- `-b`, `--border`: Thêm đường viền đứt màu xám hỗ trợ cắt ảnh.
-- `--output`: Đường dẫn tùy chỉnh tên file đầu ra.
+#### Bảng tham số CLI:
+| Tham số | Viết tắt | Giá trị mặc định | Giải thích |
+| :--- | :---: | :---: | :--- |
+| `--input` | `-i` | *(Bắt buộc)* | Đường dẫn đến thư mục hoặc file ảnh cần xử lý |
+| `--count` | `-c` | `2` | Số ảnh trên 1 trang A4 (`1`, `2`, `4`, `6`, `8`, `9`...) |
+| `--orientation` | `-o` | `landscape` | Chiều giấy: `landscape` (ngang) hoặc `portrait` (dọc) |
+| `--format` | `-f` | `docx` | Định dạng xuất: `docx`, `pdf`, `both` (cả hai) |
+| `--border` | `-b` | `False` | Thêm viền đứt mờ để hỗ trợ cắt rời ảnh |
+| `--output` | | `Tự động` | Đường dẫn file kết quả xuất ra |
 
 ---
 
-## 📁 Cấu trúc thư mục
+## 📁 Cấu trúc dự án
 
 ```text
 photo-print-arranger/
 ├── core/
 │   ├── __init__.py
-│   └── arranger.py      # Bộ máy tính toán kích thước và sinh tài liệu Word/PDF
-├── app.py               # Giao diện đồ họa Tkinter hiện đại
-├── main.py              # Điểm khởi chạy (GUI hoặc CLI)
-├── run.bat              # File click đúp chạy nhanh trên Windows
-├── requirements.txt     # Danh sách thư viện phụ thuộc
-├── .gitignore           # Bỏ qua các file rác khi đẩy lên Git
-└── README.md            # Tài liệu hướng dẫn sử dụng
+│   └── arranger.py       # Thuật toán tính toán lưới A4 & xuất văn bản Word/PDF
+├── app.py                # Giao diện Popup CustomTkinter (No-scroll, Auto-centered)
+├── main.py               # Điểm khởi chạy linh hoạt (tự động nhận diện GUI/CLI)
+├── run.bat               # File click đúp chạy nhanh trên Windows
+├── requirements.txt      # Danh sách thư viện phụ thuộc
+├── .gitignore            # Cấu hình bỏ qua file rác khi đẩy lên Git
+└── README.md             # Tài liệu dự án chi tiết
 ```
 
 ---
 
-## 🐙 Đẩy lên GitHub (Git Setup)
+## 🛠️ Công nghệ sử dụng
 
-Để lưu trữ dự án này lên GitHub cá nhân của bạn:
+- **[Python](https://www.python.org/)**: Ngôn ngữ lập trình chính.
+- **[CustomTkinter](https://github.com/TomSchimansky/CustomTkinter)**: Thiết kế giao diện hiện đại, bo góc mềm mại, tự động theo dõi chế độ Sáng/Tối.
+- **[python-docx](https://python-docx.readthedocs.io/)**: Tạo và định dạng văn bản Microsoft Word chuẩn OpenXML.
+- **[Pillow (PIL)](https://python-pillow.org/)**: Đọc và tính toán tỉ lệ khung hình ảnh gốc chính xác.
+- **[pywin32](https://github.com/mhammond/pywin32)**: Tự động hóa Microsoft Word để chuyển đổi PDF chất lượng cao.
+
+---
+
+## 🐙 Hướng dẫn lưu trữ lên GitHub
+
+Khởi tạo và đẩy dự án lên repository cá nhân của bạn:
 
 ```bash
 cd E:\linhtinh\photo-print-arranger
-git init
-git add .
-git commit -m "Initial commit: Photo Print Arranger app"
 git branch -M main
 git remote add origin https://github.com/<tai-khoan-cua-ban>/photo-print-arranger.git
 git push -u origin main
 ```
+
+---
+
+## 📄 License
+Phát hành theo giấy phép **MIT License**. Tự do sử dụng, chỉnh sửa và đóng góp!
